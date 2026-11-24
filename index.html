@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0b0d" />
+  <meta name="description" content="Um espaço pessoal para colocar os sentimentos em palavras." />
+  <title>Entre Linhas — Diário pessoal</title>
+  <style>
+    :root{color-scheme:dark;--bg:#09090b;--panel:#121215;--panel2:#18181c;--line:#29292f;--text:#f4f4f5;--muted:#96969f;--red:#e3293f;--red2:#a9162b;--soft:#2b1117}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#291016 0,transparent 34%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+    button,input,textarea{font:inherit}button{cursor:pointer}.shell{width:min(1080px,calc(100% - 32px));margin:auto;padding:34px 0 60px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:42px}.brand{display:flex;align-items:center;gap:12px}.mark{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#f13b50,#941426);display:grid;place-items:center;font-size:20px;font-weight:800;box-shadow:0 8px 26px #e3293f30}.brand-name{font-weight:750;letter-spacing:.2px}.brand-sub{font-size:12px;color:var(--muted)}.today{font-size:13px;color:var(--muted);text-align:right}
+    .intro{margin-bottom:28px}.eyebrow{color:#ff697b;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:750}.intro h1{font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:-1.5px;margin:10px 0}.intro p{color:var(--muted);margin:0;max-width:580px}
+    .layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(270px,.8fr);gap:18px;align-items:start}.panel{background:linear-gradient(180deg,#151518,#101013);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 16px 45px #0003}.panel h2{font-size:17px;margin:0 0 5px}.hint{font-size:13px;color:var(--muted);margin:0 0 20px}
+    label{display:block;font-size:13px;font-weight:650;margin:17px 0 8px}.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.mood{border:1px solid var(--line);border-radius:12px;background:#101013;color:#c9c9ce;padding:11px 4px;font-size:12px;transition:.15s}.mood span{display:block;font-size:20px;margin-bottom:5px}.mood.active{border-color:var(--red);background:var(--soft);color:#fff;box-shadow:inset 0 0 0 1px #e3293f35}
+    textarea{width:100%;min-height:190px;resize:vertical;background:#0b0b0e;border:1px solid var(--line);border-radius:12px;padding:14px;color:var(--text);outline:none}textarea:focus,input:focus{border-color:var(--red);box-shadow:0 0 0 3px #e3293f18}textarea::placeholder{color:#696970}
+    .actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}.small{font-size:12px;color:var(--muted)}.primary{border:0;border-radius:11px;padding:11px 18px;background:linear-gradient(135deg,#ed354b,#b51b30);color:white;font-weight:750;box-shadow:0 7px 20px #e3293f25}.primary:hover{filter:brightness(1.1)}.secondary{border:1px solid var(--line);background:#1b1b20;color:#ddd;border-radius:10px;padding:9px 13px}.secondary:hover{border-color:#666}
+    .side-top{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}.stat{padding:16px;background:#0d0d10;border:1px solid var(--line);border-radius:14px}.stat strong{display:block;font-size:25px}.stat span{font-size:12px;color:var(--muted)}.history-head{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}.history-head h2{margin:0}.entries{display:grid;gap:9px}.entry{border:1px solid var(--line);border-radius:13px;padding:13px;background:#0d0d10}.entry-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.entry-date{font-size:11px;color:var(--muted)}.entry-mood{font-size:12px;color:#ff8996}.entry-text{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;color:#d7d7dc;margin:9px 0 12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.entry-actions{display:flex;gap:7px}.entry-actions button{font-size:11px;padding:6px 9px}.empty{padding:22px 12px;text-align:center;border:1px dashed #36363d;border-radius:13px;color:var(--muted);font-size:13px}.empty b{display:block;color:#ddd;margin-bottom:5px}.privacy{font-size:11px;color:#777780;margin-top:15px;line-height:1.5}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#211216;border:1px solid #71303a;color:#ffe8eb;padding:11px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:760px){.shell{padding-top:22px}.layout{grid-template-columns:1fr}.panel{padding:18px}header{margin-bottom:32px}.moods{gap:5px}.mood{font-size:11px;padding:9px 2px}.side-top{grid-template-columns:1fr 1fr}}
+    @media(max-width:390px){.mood span{font-size:17px}.mood{font-size:10px}.actions{align-items:flex-end}.primary{padding:10px 13px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand"><div class="mark">✦</div><div><div class="brand-name">ENTRE LINHAS</div><div class="brand-sub">um espaço só seu</div></div></div>
+      <div class="today" id="today"></div>
+    </header>
+    <section class="intro">
+      <div class="eyebrow">Seu diário pessoal</div>
+      <h1>Às vezes, escrever<br/>já é um começo.</h1>
+      <p>Não precisa encontrar as palavras certas. Escreva no seu tempo, sem julgamentos.</p>
+    </section>
+    <div class="layout">
+      <section class="panel">
+        <h2 id="formTitle">Como você está hoje?</h2>
+        <p class="hint">Registre o que está passando pela sua cabeça.</p>
+        <label>Como está se sentindo?</label>
+        <div class="moods" id="moods">
+          <button class="mood" data-mood="Triste"><span>☁️</span>Triste</button>
+          <button class="mood" data-mood="Cansado"><span>🌧️</span>Cansado</button>
+          <button class="mood" data-mood="Vazio"><span>🌑</span>Vazio</button>
+          <button class="mood" data-mood="Ansioso"><span>🌫️</span>Ansioso</button>
+          <button class="mood" data-mood="Melhor"><span>🌤️</span>Melhor</button>
+        </div>
+        <label for="note">O que você gostaria de escrever?</label>
+        <textarea id="note" maxlength="5000" placeholder="Pode começar por aqui...&#10;&#10;O que aconteceu hoje? O que está pesando na sua mente?"></textarea>
+        <div class="actions"><span class="small" id="counter">0 / 5000</span><div style="display:flex;gap:8px"><button class="secondary" id="cancel" hidden>Cancelar</button><button class="primary" id="save">Salvar registro</button></div></div>
+        <p class="privacy">🔒 Seus registros ficam salvos neste navegador e neste dispositivo. Não são enviados para um servidor.</p>
+      </section>
+      <aside>
+        <div class="side-top">
+          <div class="stat"><strong id="total">0</strong><span>Registros feitos</span></div>
+          <div class="stat"><strong id="days">0</strong><span>Dias registrados</span></div>
+        </div>
+        <section class="panel">
+          <div class="history-head"><h2>Seu histórico</h2><span class="small" id="historyCount">0 registros</span></div>
+          <div class="entries" id="entries"><div class="empty"><b>Ainda não há registros.</b>Seu primeiro desabafo pode começar hoje.</div></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const KEY='entre-linhas-registros-v1';
+    const $=s=>document.querySelector(s);
+    let records=load(), mood='', editing=null;
+    function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
+    function persist(){localStorage.setItem(KEY,JSON.stringify(records))}
+    function dateLabel(value){return new Intl.DateTimeFormat('pt-BR',{dateStyle:'medium',timeStyle:'short'}).format(new Date(value))}
+    function escapeHtml(value){return value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+    function notify(message){const el=$('#toast');el.textContent=message;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+    function render(){
+      $('#total').textContent=records.length;
+      $('#days').textContent=new Set(records.map(r=>new Date(r.date).toDateString())).size;
+      $('#historyCount').textContent=records.length+' '+(records.length===1?'registro':'registros');
+      const list=$('#entries');
+      if(!records.length){list.innerHTML='<div class="empty"><b>Ainda não há registros.</b>Seu primeiro desabafo pode começar hoje.</div>';return}
+      list.innerHTML=[...records].sort((a,b)=>new Date(b.date)-new Date(a.date)).map(r=>`<article class="entry"><div class="entry-top"><span class="entry-date">${dateLabel(r.date)}</span><span class="entry-mood">${escapeHtml(r.mood)}</span></div><p class="entry-text">${escapeHtml(r.text)}</p><div class="entry-actions"><button class="secondary" data-edit="${r.id}">Editar</button><button class="secondary" data-delete="${r.id}">Excluir</button></div></article>`).join('');
+    }
+    function selectMood(value){mood=value;document.querySelectorAll('.mood').forEach(b=>b.classList.toggle('active',b.dataset.mood===value))}
+    document.querySelectorAll('.mood').forEach(b=>b.addEventListener('click',()=>selectMood(b.dataset.mood)));
+    $('#note').addEventListener('input',()=>$('#counter').textContent=$('#note').value.length+' / 5000');
+    $('#save').addEventListener('click',()=>{
+      const text=$('#note').value.trim();
+      if(!mood){notify('Escolha como está se sentindo.');return}
+      if(!text){notify('Escreva algumas palavras antes de salvar.');$('#note').focus();return}
+      if(editing){const item=records.find(r=>r.id===editing);if(item){item.text=text;item.mood=mood;item.updatedAt=new Date().toISOString()}notify('Registro atualizado.')}
+      else{records.push({id:Date.now().toString(),date:new Date().toISOString(),mood,text});notify('Seu registro foi salvo.')}
+      persist();resetForm();render();
+    });
+    function resetForm(){editing=null;$('#note').value='';$('#counter').textContent='0 / 5000';selectMood('');$('#formTitle').textContent='Como você está hoje?';$('#save').textContent='Salvar registro';$('#cancel').hidden=true}
+    $('#cancel').addEventListener('click',resetForm);
+    $('#entries').addEventListener('click',e=>{
+      const edit=e.target.closest('[data-edit]');const del=e.target.closest('[data-delete]');
+      if(edit){const r=records.find(x=>x.id===edit.dataset.edit);if(!r)return;editing=r.id;$('#note').value=r.text;$('#counter').textContent=r.text.length+' / 5000';selectMood(r.mood);$('#formTitle').textContent='Editar registro';$('#save').textContent='Salvar alterações';$('#cancel').hidden=false;window.scrollTo({top:0,behavior:'smooth'})}
+      if(del){const r=records.find(x=>x.id===del.dataset.delete);if(!r)return;if(confirm('Excluir este registro? Essa ação não pode ser desfeita.')){records=records.filter(x=>x.id!==r.id);persist();if(editing===r.id)resetForm();render();notify('Registro excluído.')}}
+    });
+    $('#today').textContent=new Intl.DateTimeFormat('pt-BR',{weekday:'long',day:'numeric',month:'long'}).format(new Date());
+    render();
+  </script>
+</body>
+</html>
